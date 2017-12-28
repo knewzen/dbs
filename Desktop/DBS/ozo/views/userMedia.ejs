@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>登入中...</title>
+        <script>
+            function autoSubmit()
+            {
+                var form = document.getElementById("form");
+                form.submit();
+            }
+        </script>
+    </head>
+    <body onload="autoSubmit()">
+        <form action="/users/user" id="form" method='post'>
+            <input name="id" type="hidden" value=<%=id%> />
+        </form>
+    </body>
+</html>

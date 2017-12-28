@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>用户结算界面</title>
+        <%- include partials/head.ejs %>
+    </head>
+    <!--這個頁面是用戶結算頁面-->
+    <body>
+      <section class="hero is-white is-bold is-fullheight">
+          <div class="hero-head">
+              <%- include partials/uheader.ejs %>
+          </div>
+          <div class="hero-body">
+              <div class="container">
+                  <div class="columns">
+                      <h1 class="title column is-3 is-offset-one-quarter">结算</h1>
+                      <div class="column is-offset-2">
+                          <form action="/users/user/" method="post">
+                              <input name="id" type="hidden" value=<%=id%> />
+                              <button class="button is-primary is-medium" type="submit">返回主页</button>
+                          </form>
+                      </div>
+                  </div>
+                  <div class="columns is-centered">
+                    <div class="field column is-4" style="width:50%">
+                          <label class="label"><pre>您的ID是：<%=userid%></pre></label>
+
+                          <br>
+
+                          <label class="label"><pre>您的用户名是：<%=bikeid%></pre></label>
+                          <br>
+
+                          <label class="label"><pre>您的使用费用是<%=bill%>元</pre></label>
+                          <br>
+
+                          <label class="label"><pre>您出发时间是<%=begtime%></pre></label>
+                          <br>
+
+                          <label class="label"><pre>您出发的地点是<%=begstreet%>,<%=begdistrict%></pre></label>
+                          <br>
+
+                          <label class="label"><pre>您结束时间是<%=endtime%></pre></label>
+                          <br>
+
+                          <label class="label"><pre>您结束地点是<%=endstreet%>, <%=enddistrict%></pre></label>
+                          <br>
+
+                    </div>
+                  </div>
+                  <div class="tile is-ancestor is-vertical" style="margin-left:auto; margin-right:auto">
+                      <div class="tile is-parent">
+
+                          <div class="tile is-parent is-vertical is-4">
+                            <form action="/users/user/" method="post">
+                                <input name="id" type="hidden" value=<%=id%> />
+                                <button class="button" type="submit">支付</button>
+                            </form>
+                          </div>
+
+                      </div>
+                    </div>
+
+      </div>
+    </div>
+      </section>
+        <%- include partials/footer.ejs %>
+    </body>
+</html>

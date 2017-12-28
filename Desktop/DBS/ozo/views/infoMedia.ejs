@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>跳转中...</title>
+        <script>
+            function autoSubmit()
+            {
+                var form = document.getElementById("form");
+                form.submit();
+            }
+        </script>
+    </head>
+    <!--這個是中轉到用戶信息界面的，不要更改-->
+    <body onload="autoSubmit()">
+        <form action="/users/user/info" id="form" method='post'>
+            <input name="id" type="hidden" value=<%=id%> />
+            <input name="msg" type="hidden" value=<%=message%> />
+        </form>
+        <%- include partials/footer.ejs %>
+    </body>
+</html>

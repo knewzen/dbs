@@ -1,0 +1,38 @@
+<!-- views/partials/header.ejs -->
+<!-- <header> -->
+  <nav id="header" class="navbar is-primary">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+          <img src="/images/logo_white.png" alt="ozo_logo" height="80%">
+      </a>
+      <div class="navbar-burger burger" data-target="navMenuColorwarning-example">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div id="navMenuColorwarning-example" class="navbar-menu">
+      <div class="navbar-start">
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <p>欢迎你:)</p>
+        </div>
+        <div class="navbar-item">
+          <p> 用户id:<%=id%></p>
+        </div>
+        <div class="navbar-item">
+          <form action="/login" method="get">
+            <button class="button is-pku-red is-inverted is-outlined" type="submit"><span>退出登录</span>
+              <span class="icon is-medium">
+                <i class="fa fa-lg fa-sign-out"></i>
+              </span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+<!-- </header> -->

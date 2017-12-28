@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>管理员特殊查询</title>
+        <%- include partials/head.ejs %>
+    </head>
+    <body>
+      <section class="hero is-white is-bold is-fullheight">
+          <div class="hero-head">
+              <%- include partials/header.ejs %>
+          </div>
+          <div class="hero-body">
+            <div class="container">
+              <div class="columns">
+                  <h1 class="title column is-3 is-offset-one-quarter"><%=message%></h1>
+                  <div class="column is-offset-2">
+                      <form action="/users/admin" method="post">
+                          <input name="id" type="hidden" value=<%=id%> />
+                          <input name="username" type="hidden" value=<%=username%> />
+                          <button class="button is-primary is-medium" type="submit">返回</button>
+                      </form>
+                  </div>
+              </div>
+
+              <div class="columns is-centered">
+                <div class="field column is-4" style="width:50%">
+                  <form action="/users/admin/special/pass" method="post">
+                      <input name="id" type="hidden" value=<%=id%> />
+                      <input name="username" type="hidden" value=<%=username%> />
+                      <input name="action" type="hidden" value="1" />
+                      <label class="label">查询一：找出每个行政区内，共享单车数低于区域内街道平均共享单车数的街道</label>
+                      <div class="field is-grouped is-grouped-left">
+                        <p class="control">
+                          <button class="button is-link" type="submit">执行查询一</button>
+                        </p>
+                      </div>
+
+                      <br>
+                  </form>
+
+                  <form action="/users/admin/special/pass" method="post">
+                      <input name="id" type="hidden" value=<%=id%> />
+                      <input name="username" type="hidden" value=<%=username%> />
+                      <input name="action" type="hidden" value="2" />
+                      <label class="label">查询二：找出</label><input name="start" type="text" placeholder="请输入开始时间">到<input name="end" type="text" placeholder="请输入结束时间"><label>时间内，完成订单数量最多的用户（如有并列，请列出所有这样的用户）</label>
+                      <br>
+                      <div class="field is-grouped is-grouped-left">
+                        <p class="control">
+                          <button class="button is-link" type="submit">执行查询二</button>
+                        </p>
+                      </div>
+                      <br>
+                  </form>
+
+                  <form action="/users/admin/special/pass" method="post">
+                      <input name="id" type="hidden" value=<%=id%> />
+                      <input name="username" type="hidden" value=<%=username%> />
+                      <input name="action" type="hidden" value="3" />
+                      <label class="label">查询三：对于在街道<input name="street" type="text" placeholder="请输入街道名称">开始或结束骑行的用户，找出这些用户的总消费金额</label>
+
+                      <div class="field is-grouped is-grouped-left">
+                        <p class="control">
+                          <button class="button is-link" type="submit">执行查询三</button>
+                        </p>
+                      </div>
+                      <br>
+                  </form>
+
+                  <form action="/users/admin/special/pass" method="post">
+                      <input name="id" type="hidden" value=<%=id%> />
+                      <input name="username" type="hidden" value=<%=username%> />
+                      <input name="action" type="hidden" value="4" />
+                      <label class="label">查询四：查询故障率大于所有单车平均故障率的单车类型，并分别按照其平均故障率以及订单数量排序 </label>
+                      <div class="field is-grouped is-grouped-left">
+                        <p class="control">
+                          <button class="button is-link" type="submit">执行查询四</button>
+                        </p>
+                      </div>
+                      <br>
+                  </form>
+
+                  <form action="/users/admin/special/pass" method="post">
+                      <input name="id" type="hidden" value=<%=id%> />
+                      <input name="username" type="hidden" value=<%=username%> />
+                      <input name="action" type="hidden" value="5" />
+                      <label class="label">查询五：查询故障单车数量比可使用单车数量更大的所有街道</label>
+                      <div class="field is-grouped is-grouped-left">
+                        <p class="control">
+                          <button class="button is-link" type="submit">执行查询五</button>
+                        </p>
+                      </div>
+                      <br>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
+        <%- include partials/footer.ejs %>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>特殊查询显示界面</title>
+        <%- include partials/head.ejs %>
+    </head>
+    <!--需要解析xml
+    結構是
+    <Xml>
+        <Answer>
+            <District></District>
+            <Street></Street>
+        </Answer>
+        ...
+    </Xml>
+    -->
+    <body>
+      <section class="hero is-white is-bold is-fullheight">
+          <div class="hero-head">
+              <%- include partials/uheader.ejs %>
+          </div>
+        <h1>查询一</h1>
+        <h1>当前管理员id：<%=id%></h1>
+        <h1>当前管理员用户名：<%=username%></h1>
+        <div>
+            <p>
+                <%=xml%>
+            </p>
+        </div>
+        <form action="/users/admin/special" method="post">
+            <input name="id" type="hidden" value=<%=id%> />
+            <input name="username" type="hidden" value=<%=username%> />
+            <button type="submit">返回</button>
+        </form>
+      </section>
+        <%- include partials/footer.ejs %>
+    </body>
+</html>

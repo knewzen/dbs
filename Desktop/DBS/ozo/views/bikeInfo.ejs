@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>
+            单车信息
+        </title>
+        <%- include partials/head.ejs %>
+    </head>
+    <!--這個頁面是管理員查詢單車結果頁面-->
+    <body>
+      <section class="hero is-white is-bold is-fullheight">
+          <div class="hero-head">
+              <%- include partials/header.ejs %>
+          </div>
+          <div class="hero-body">
+              <div class="container">
+                <div class="columns">
+                    <h1 class="title column is-3 is-offset-one-quarter">查询成功</h1>
+                    <div class="column is-offset-2">
+                        <form action="/users/user/" method="post">
+                            <input name="id" type="hidden" value=<%=id%> />
+                            <button class="button is-primary is-medium" type="submit">返回</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="columns is-centered">
+                  <div class="field column is-4" style="width:50%">
+                        <label class="label"><pre>当前管理员ID：                      <%=id%></pre></label>
+
+                        <br>
+
+                        <label class="label"><pre>管理员用户名：                      <%=username%></pre></label>
+                        <br>
+
+                        <label class="label"><pre>单车ID：                              <%=bikeid%></pre></label>
+                        <br>
+
+                        <label class="label"><pre>单车密码：                           <%=password%></pre></label>
+                        <br>
+                        <label class="label"><pre>单车类型：                           <%=info%></pre></label>
+                        <br>
+                        <label class="label"><pre>单车状态：                           <%=status%></pre></label>
+                        <br>
+                        <label class="label"><pre>单车位置经度：                      <%=longitude%></pre></label>
+                        <br>
+                        <label class="label"><pre>单车位置纬度：                      <%=latitude%></pre></label>
+                        <br>
+                        <label class="label"><pre>单车所在街道：                      <%=street%></pre></label>
+                        <br>
+                        <label class="label"><pre>单车所在行政区：                    <%=district%></pre></label>
+                        <br>
+                  </div>
+                </div>
+
+
+      </div>
+    </div>
+      </section>
+        <%- include partials/footer.ejs %>
+    </body>
+</html>

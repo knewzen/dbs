@@ -1,0 +1,96 @@
+根据MySQL安装要求在机器上配置好MySQL的服务
+命令行 mysql -u root -p
+输入密码后进入mysql
+
+创建数据库 create database ozo;
+
+创建管理员 create user admin@localhost identified by 'adminenter';
+
+授予权限 grant all on ozo.* to admin@localhost;
+
+创建关系表:
+
+CREATE TABLE `user` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `password` varchar(20) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `phone_number` char(15) NOT NULL,
+  `balance` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `gender` int(1) DEFAULT NULL,
+  `is_student` int(1) NOT NULL DEFAULT '0',
+  `using_bike` int(1) NOT NULL DEFAULT '0',
+  `latitude` float NOT NULL DEFAULT '0',
+  `longitude` float NOT NULL DEFAULT '0',
+  `street` varchar(20) NOT NULL,
+  `district` varchar(20) NOT NULL,
+  `is_admin` int(1) NOT NULL DEFAULT '0',
+  `job` varchar(20) DEFAULT '',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `phone_number` (`phone_number`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+ CREATE TABLE `bike` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `password` varchar(10) NOT NULL,
+  `typeid` int(11) unsigned NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '0',
+  `latitude` float NOT NULL DEFAULT '0',
+  `longitude` float NOT NULL DEFAULT '0',
+  `street` varchar(20) NOT NULL,
+  `district` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `typeid` (`typeid`),
+  CONSTRAINT `typeid` FOREIGN KEY (`typeid`) REFERENCES `type` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=401 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `bill` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `bill` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `userid` bigint(20) unsigned NOT NULL,
+  `bikeid` bigint(20) unsigned NOT NULL,
+  `start_time` bigint(20) NOT NULL DEFAULT '0',
+  `end_time` bigint(20) NOT NULL DEFAULT '0',
+  `start_latitude` float NOT NULL DEFAULT '0',
+  `end_latitude` float NOT NULL DEFAULT '0',
+  `start_longitude` float NOT NULL DEFAULT '0',
+  `end_longitude` float NOT NULL DEFAULT '0',
+  `start_street` varchar(20) NOT NULL,
+  `end_street` varchar(20) NOT NULL,
+  `start_district` varchar(20) NOT NULL,
+  `end_district` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `userid` (`userid`) USING BTREE,
+  KEY `bikeid` (`bikeid`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+CREATE TABLE `tmp_order` (
+  `user_id` bigint(20) unsigned NOT NULL,
+  `bike_id` bigint(20) unsigned DEFAULT NULL,
+  `longitude` float NOT NULL DEFAULT '0',
+  `latitude` float NOT NULL DEFAULT '0',
+  `street` varchar(20) NOT NULL,
+  `district` varchar(20) NOT NULL,
+  `time` bigint(20) NOT NULL DEFAULT '0',
+  `cur_latitude` float NOT NULL DEFAULT '0',
+  `cur_longitude` float NOT NULL DEFAULT '0',
+  PRIMARY KEY (`user_id`),
+  KEY `bike_id` (`bike_id`),
+  CONSTRAINT `tmp_order_ibfk_1` FOREIGN KEY (`bike_id`) REFERENCES `bike` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `type` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `info` varchar(64) NOT NULL,
+  `price_adult` decimal(4,2) unsigned NOT NULL DEFAULT '1.00',
+  `price_student` decimal(4,2) unsigned NOT NULL DEFAULT '0.50',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+创建user用户: create user user@localhost identified by 20171215;
+
+授予权限:       GRANT SELECT, UPDATE ON `ozo`.* TO 'user'@'localhost';
+		GRANT INSERT, DELETE ON `ozo`.`user` TO 'user'@'localhost';
+		GRANT INSERT ON `ozo`.`bill` TO 'user'@'localhost';
+		GRANT INSERT, DELETE ON `ozo`.`tmp_order` TO 'user'@'localhost';
+
+数据库创建完毕

@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>遇到了错误</title>
+        <%- include partials/head.ejs %>
+    </head>
+    <!--這個頁面用來輸出錯誤-->
+    <body>
+      <section class="hero is-white is-bold is-fullheight">
+          <div class="hero-head">
+              <%- include partials/uheader.ejs %>
+          </div>
+        <form action="/users/user" id="form" method='post'>
+            <h1>发生错误</h1>
+            <h2>错误信息为：<%=message%></h2>
+            <input name="id" type="hidden" value=<%=id%> />
+            <input name="btn" type="submit" value="点击回到主页">
+        </form>
+      </section>
+        <%- include partials/footer.ejs %>
+    </body>
+</html>

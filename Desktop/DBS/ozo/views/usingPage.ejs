@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>用户用车界面</title>
+        <script src="/javascripts/getPosition.js" type="text/javascript"></script>
+        <link type="text/css" rel="stylesheet" href="/stylesheets/hxlstyle/use.css"/>
+        <link type="text/css" rel="stylesheet" href="/stylesheets/hxlstyle/button.css"/>
+        <script>
+                getPosition();
+                //在这里获取地理信息，獲取接到和行政區放到輸入裏
+        </script>
+        <script>
+            //这里设置定时功能
+            function setAlarm()
+            {
+                setInterval("query()",10*60*1000);
+            }
+            function query()
+            {
+                var query = document.getElementById('query');
+                query.submit();
+            }
+        </script>
+    </head>
+    <body onload="setAlarm()">
+        <h1>使用中</h1>
+        <div class="user_info">
+            <ul>
+                <li><font>您的id</font><font class="info_input" type="text" ><%=userid%></font></li>
+                <li><font>车辆id</font><font class="info_input" type="text" ><%=bikeid%></font></li>
+                <li><font>解锁密码</font><font class="info_input" type="text" ><%=password%></font></li>
+                <li><font>骑行时间</font><font class="info_input" type="text" ><%=begtime%></font></li>
+                <li><font>出发地点</font><font class="info_input" type="text" ><%=begstreet%>, <%=begdistrict%></font></li>
+            </ul>
+            <form action="/users/user/balance" method="post">
+                <input name="id", type="hidden" value=<%=userid%> />
+                <input class="latitude" name="latitude" type="hidden" value="0" />
+                <input class="longitude" name="longitude" type="hidden" value="0" />
+                <input name="district" type="hidden" value="none" />
+                <input name="street" type="hidden" value="none" />
+                <input name="error" type="hidden" value="0" />
+                <input type="submit" id="submit_btn" value="正常结束行程" class="btn blue"/>
+            </form>
+            <p></p>
+            <form action="/users/user/balance" method="post">
+                <input name="id", type="hidden" value=<%=userid%> />
+                <input class="latitude" name="latitude" type="hidden" value="0" />
+                <input class="longitude" name="longitude" type="hidden" value="0" />
+                <input name="district" type="hidden" value="none" />
+                <input name="street" type="hidden" value="none" />
+                <input name="error" type="hidden" value="2" />
+                <input type="submit" id="submit_btn" value="报修" class="btn pink"/>
+            </form>
+        </div>
+        <form id="query" action="/users/user/using/query" method="post">
+            <input name="userid", type="hidden" value=<%=userid%> />
+            <input class="latitude" name="curlatitude" type="hidden" value="0" />
+            <input class="longitude" name="curlongitude" type="hidden" value="0" />
+        </form>
+    </body>
+</html>

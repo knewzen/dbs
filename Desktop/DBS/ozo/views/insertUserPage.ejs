@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>管理员插入界面</title>
+        <%- include partials/head.ejs %>
+    </head>
+    <body>
+<!--         <h1>当前管理员id：<%=id%></h1>
+        <h1>当前管理员用户名：<%=username%></h1> -->
+        <section class="hero is-white is-bold is-fullheight">
+            <div class="hero-head">
+                <%- include partials/header.ejs %>
+            </div>
+            <div class="hero-body">
+                <div class="container">
+                    <div class="columns">
+                        <h1 class="title column is-3 is-offset-one-quarter"><%=message%></h1>
+                        <div class="column is-offset-2">
+                            <form action="/users/admin" method="post">
+                                <input name="id" type="hidden" value=<%=id%> />
+                                <input name="username" type="hidden" value=<%=username%> />
+                                <button class="button is-primary is-medium" type="submit">返回</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="columns is-centered">
+                        <div class="field column is-4" style="width:50%">
+                            <form action="/users/admin/insertUser/pass" method="post">
+                                <input name="id" type="hidden" value=<%=id%> />
+                                <input name="username" type="hidden" value=<%=username%> />
+
+                                <label class="label">用户名</label>
+                                <div class="control has-icons-left">
+                                    <input class="input" name="new_username" type="text" placeholder="请填写新用户用户名">
+                                    <span class="icon is-small is-left">
+                                      <i class="fa fa-user"></i>
+                                    </span>
+                                </div>
+                                <br>
+                                <label class="label">密码</label>
+                                <div class="control has-icons-left">
+                                    <input class="input" name="new_password" type="password" placeholder="请填写新用户密码">
+                                    <span class="icon is-small is-left">
+                                      <i class="fa fa-lock"></i>
+                                    </span>
+                                </div>
+                                <br>
+                                <label class="label">手机号码</label>
+                                <div class="control has-icons-left">
+                                    <input class="input" name="new_phone_number" type="tel" placeholder="请填写新用户手机号码">
+                                    <span class="icon is-small is-left">
+                                      <i class="fa fa-phone"></i>
+                                    </span>
+                                </div>
+                                <br>
+                                <label class="label">初始账户余额</label>
+                                <div class="control has-icons-left">
+                                    <input class="input" name="new_balance" type="text" placeholder="请填写新用户初始账户余额">
+                                    <span class="icon is-small is-left">
+                                      <i class="fa fa-cny"></i>
+                                    </span>
+                                </div>
+                                <br>
+                                <label class="label">工作</label>
+                                <div class="control has-icons-left">
+                                    <input class="input" name="new_job" type="text" placeholder="请填写新用户工作">
+                                    <span class="icon is-small is-left">
+                                      <i class="fa fa-user-circle"></i>
+                                    </span>
+                                </div>
+
+                                <br>
+
+                                <div class="field is-horizontal">
+                                  <div class="field-body">
+                                    <div class="field">
+                                        <label class="label">性别</label>
+                                        <div class="field is-narrow">
+                                          <div class="control">
+                                            <label class="radio">
+                                              <input name="new_gender" type="radio" value="0" checked>女
+                                            </label>
+                                            <label class="radio">
+                                              <input name="new_gender" type="radio" value="1" >男
+                                            </label>
+                                          </div>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <label class="label">管理员身份</label>
+                                        <div class="field is-narrow">
+                                          <div class="control">
+                                            <label class="radio">
+                                              <input name="new_is_admin" type="radio" value="0" checked>否
+                                            </label>
+                                            <label class="radio">
+                                              <input name="new_is_admin" type="radio" value="1" >是
+                                            </label>
+                                          </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="field is-grouped is-grouped-left">
+                                  <p class="control">
+                                    <button class="button is-link" type="submit">确认创建</button>
+                                  </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <%- include partials/footer.ejs %>
+    </body>
+</html>

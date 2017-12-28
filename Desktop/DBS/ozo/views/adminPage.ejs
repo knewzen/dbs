@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>管理员页面</title>
+        <%- include partials/head.ejs %>
+    </head>
+    <!--這個頁面是管理員頁面-->
+    <body>
+   <!--      <h3>管理员id:<%=id%></h3>
+        <h3>您的管理员用户名为<%=username%></h3> -->
+        <section class="hero is-white is-bold is-fullheight">
+            <div class="hero-head">
+                <%- include partials/header.ejs %>
+            </div>
+            <div class="hero-body">
+                <div class="container">
+                  
+          <!--           <h1 class="title">
+                        Full Height title
+                    </h1>
+                    <h2 class="subtitle">
+                        Full Height subtitle
+                    </h2> -->
+
+                    <div class="tile is-ancestor is-vertical">
+                        <div class="tile is-parent">
+                            <div class="tile is-parent is-vertical is-4">
+                                <form class="tile is-child notification is-primary button" action="/users/admin/insertUser" method="post" onclick="this.submit()">
+                                    <p class="title has-text-light has-text-centered"><span>增加用户</span>
+                                        <span class="icon is-medium">
+                                          <i class="fa fa-lg fa-user-plus"></i>
+                                        </span>
+                                    </p>
+                                    <input name="id" type="hidden" value=<%=id%> />
+                                    <input name="username" type="hidden" value=<%=username%> />
+                                </form>
+                                <form class="tile is-child notification is-primary button" action="/users/admin/deleteUser" method="post" onclick="this.submit()">
+                                    <p class="title has-text-light has-text-centered"><span>删除用户</span>
+                                        <span class="icon is-medium">
+                                          <i class="fa fa-lg fa-user-times"></i>
+                                        </span>
+                                    </p>
+                                    <input name="id" type="hidden" value=<%=id%> />
+                                    <input name="username" type="hidden" value=<%=username%> />
+                                </form>
+                            </div>
+                            <div class="tile is-parent is-vertical is-4">
+                                <form class="tile is-child notification is-primary button" action="/users/admin/insertBike" method="post" onclick="this.submit()">
+                                    <p class="title has-text-light has-text-centered"><span>增加单车</span>
+                                        <span class="icon is-medium">
+                                          <i class="fa fa-lg fa-bicycle"></i>
+                                        </span>
+                                    </p>
+                                    <input name="id" type="hidden" value=<%=id%> />
+                                    <input name="username" type="hidden" value=<%=username%> />
+                                </form>
+                                <form class="tile is-child notification is-primary button" action="/users/admin/deleteBike" method="post" onclick="this.submit()">
+                                    <p class="title has-text-light has-text-centered"><span>删除单车</span>
+                                        <span class="icon is-medium fa-stack">
+                                            <i class="fa fa-stack-1x fa-bicycle has-text-grey"></i>
+                                            <i class="fa fa-stack-2x fa-ban"></i>
+                                        </span>
+                                    </p>
+                                    <input name="id" type="hidden" value=<%=id%> />
+                                    <input name="username" type="hidden" value=<%=username%> />
+                                </form>
+                            </div>
+                            <div class="tile is-parent is-vertical is-4">
+                                <form class="tile is-child notification is-primary button" action="/users/admin/queryBike" method="post" onclick="this.submit()">
+                                    <p class="title has-text-light has-text-centered"><span>查询单车信息</span>
+                                        <span class="icon is-medium">
+                                          <i class="fa fa-lg fa-check-square-o"></i>
+                                        </span>
+                                    </p>
+                                    <input name="id" type="hidden" value=<%=id%> />
+                                    <input name="username" type="hidden" value=<%=username%> />
+                                </form>
+                                <form class="tile is-child notification is-primary button" action="/users/admin/updateBike" method="post" onclick="this.submit()">
+                                    <p class="title has-text-light has-text-centered"><span>更新单车信息</span>
+                                        <span class="icon is-medium">
+                                          <i class="fa fa-lg fa-wrench"></i>
+                                        </span>
+                                    </p>
+                                    <input name="id" type="hidden" value=<%=id%> />
+                                    <input name="username" type="hidden" value=<%=username%> />
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tile is-parent"><div class="tile is-parent">
+                            <form class="tile is-child notification is-primary button" action="/users/admin/special" method="post" onclick="this.submit()">
+                                <p class="title has-text-light has-text-centered"><span>特殊查询</span>
+                                    <span class="icon is-medium">
+                                      <i class="fa fa-lg fa-bar-chart"></i>
+                                    </span>
+                                </p>
+                                <input name="id" type="hidden" value=<%=id%> />
+                                <input name="username" type="hidden" value=<%=username%> />
+                            </form>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <%- include partials/footer.ejs %>
+    </body>
+</html>

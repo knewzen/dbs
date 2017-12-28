@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>跳转中...</title>
+        <script>
+            function autoSubmit()
+            {
+                var form = document.getElementById("form");
+                form.submit();
+            }
+        </script>
+    </head>
+    <!--這個頁面是中轉到更改信息頁面的，不要更改-->
+    <body onload="autoSubmit()">
+        <form action="/users/user/change" id="form" method='post'>
+            <input name="id" type="hidden" value=<%=id%> />
+            <input name="msg" type="hidden" value=<%=message%> />
+        </form>
+    </body>
+</html>

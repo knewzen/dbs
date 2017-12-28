@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>用户充值界面</title>
+        <%- include partials/head.ejs %>
+    </head>
+    <!--這個頁面是用戶充值頁面-->
+    <body>
+      <section class="hero is-white is-bold is-fullheight">
+          <div class="hero-head">
+              <%- include partials/uheader.ejs %>
+          </div>
+          <div class="hero-body">
+              <div class="container">
+
+
+                  <div class="columns is-centered">
+                      <div class="field column is-4" style="width:50%">
+                        <form action="/users/user/change/recharge/pass" method="post">
+                            <label class="label">当前余额为<%=balance%>元</label>
+                            <br>
+                            <label class="label">充值金额</label>
+                            <div class="control has-icons-left">
+                              <input name="delta" type="text" value="0" placeholder="请输入充值金额"/>
+                              <input name="id" type="hidden" value=<%=id%> />
+                            </div>
+                            <br>
+                            <div class="field is-grouped is-grouped-left">
+                              <p class="control">
+                                <button class="button is-primary" type="submit">确认充值</button>
+                              </p>
+                            </div>
+                        </form>
+                        <br>
+                        <form action="/users/user/info" method="post">
+                            <input name="id" type="hidden" value=<%=id%> />
+                            <input name="msg" type="hidden" value="未进行充值" />
+                            <div class="field is-grouped is-grouped-left">
+                              <p class="control">
+                                <button class="button is-link" type="submit">放弃充值，返回</button>
+                              </p>
+                            </div>
+                        </form>
+                      </div>
+                    </div>
+        
+      </div>
+    </div>
+      </section>
+        <%- include partials/footer.ejs %>
+    </body>
+</html>

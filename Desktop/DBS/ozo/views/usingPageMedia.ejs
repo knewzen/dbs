@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>跳转中...</title>
+        <script>
+            function autoSubmit()
+            {
+                var form = document.getElementById("form");
+                form.submit();
+            }
+        </script>
+    </head>
+    <body onload="autoSubmit()">
+        <form action="/users/user/using" id="form" method="post">
+            <input name="id" type="hidden" value=<%=id%> />
+        </form>
+    </body>
+</html>

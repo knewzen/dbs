@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>用户租车界面</title>
+        <%- include partials/head.ejs %>
+        <script src="/javascripts/getPosition.js" type="text/javascript"></script>
+        <script>
+                getPosition();
+                //在这里获取地理信息,街道和行政區，讓後寫到輸入裏,可以更改getPosition函數
+        </script>
+    </head>
+    <body>
+      <section class="hero is-white is-bold is-fullheight">
+          <div class="hero-head">
+              <%- include partials/uheader.ejs %>
+          </div>
+          <div class="hero-body">
+              <div class="container">
+                  <div class="columns">
+                      <h1 class="title column is-3 is-offset-one-quarter"><%=message%></h1>
+                      <div class="column is-offset-2">
+                          <form action="/users/user/" method="post">
+                              <input name="id" type="hidden" value=<%=id%> />
+                              <button class="button is-primary is-medium" type="submit">返回</button>
+                          </form>
+                      </div>
+                  </div>
+                  <div class="columns is-centered">
+                      <div class="field column is-4" style="width:50%">
+                          <form action="/users/user/rent/pass" method="post">
+                            <input name="userid" type="hidden" value="<%=id%>">
+                            <input id="longitude" name="beglongitude" type="hidden" value=0>
+                            <input id="latitude" name="beglatitude" type="hidden" value=0>
+                            <input name="begstreet" type="hidden" value="none">
+                            <input name="begdistrict" type="hidden" value="none">
+
+                              <label class="label">单车号码</label>
+                              <div class="control has-icons-left">
+                                  <input class="input" name="bike_id" type="text" placeholder="请输入要租用的单车号码">
+                                  <span class="icon is-small is-left">
+                                    <i class="fa fa-user"></i>
+                                  </span>
+                              </div>
+                              <br>
+
+                              <div class="field is-grouped is-grouped-left">
+                                <p class="control">
+                                  <button class="button is-link" type="submit">确定租车</button>
+                                </p>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+
+      </div>
+    </div>
+      </section>
+        <%- include partials/footer.ejs %>
+    </body>
+</html>

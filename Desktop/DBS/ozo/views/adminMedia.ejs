@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>登入中...</title>
+        <script>
+            function autoSubmit()
+            {
+                var form = document.getElementById("form");
+                form.submit();
+            }
+        </script>
+    </head>
+    <!--這個頁面是用來中轉到管理員頁面的，不要更改-->
+    <body onload="autoSubmit()">
+        <form action="/users/admin" id="form" method="post">
+            <input name="id" type="hidden" value=<%=id%> />
+            <input name="username" type="hidden" value=<%=username%> />
+        </form>
+    </body>
+</html>

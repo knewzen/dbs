@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>管理员更新界面</title>
+        <%- include partials/head.ejs %>
+    </head>
+    <body>
+      <section class="hero is-white is-bold is-fullheight">
+          <div class="hero-head">
+              <%- include partials/header.ejs %>
+          </div>
+          <div class="hero-body">
+            <div class="container">
+              <div class="columns">
+                  <h1 class="title column is-3 is-offset-one-quarter"><%=message%></h1>
+                  <div class="column is-offset-2">
+                      <form action="/users/admin" method="post">
+                          <input name="id" type="hidden" value=<%=id%> />
+                          <input name="username" type="hidden" value=<%=username%> />
+                          <button class="button is-primary is-medium" type="submit">返回</button>
+                      </form>
+                  </div>
+              </div>
+
+              <div class="columns is-centered">
+                <div class="field column is-4" style="width:50%">
+                    <form action="/users/admin/updateBike/pass" method="post">
+                        <input name="id" type="hidden" value=<%=id%> />
+                        <input name="username" type="hidden" value=<%=username%> />
+
+                        <label class="label">单车ID</label>
+                        <div class="control has-icons-left">
+                            <input class="input" name="update_id" type="text" placeholder="请填写要更新单车的ID">
+                            <span class="icon is-small is-left">
+                              <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                        <br>
+
+                        <label class="label">密码</label>
+                        <div class="control has-icons-left">
+                            <input class="input" name="update_password" type="text" placeholder="请填写要更新单车的密码">
+                            <span class="icon is-small is-left">
+                              <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                        <br>
+
+                        <label class="label">类型码</label>
+                        <div class="control has-icons-left">
+                            <input class="input" name="update_typeid" type="text" placeholder="请填写要更新单车的类型码">
+                            <span class="icon is-small is-left">
+                              <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                        <br>
+
+                        <label class="label">状态</label>
+                        <div class="control has-icons-left">
+                            <input class="input" name="update_status" type="text" placeholder="请填写要更新单车的状态">
+                            <span class="icon is-small is-left">
+                              <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                        <br>
+
+                        <label class="label">纬度</label>
+                        <div class="control has-icons-left">
+                            <input class="input" name="update_latitude" type="text" placeholder="请填写要更新单车的纬度">
+                            <span class="icon is-small is-left">
+                              <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                        <br>
+
+                        <label class="label">经度</label>
+                        <div class="control has-icons-left">
+                            <input class="input" name="update_longitude" type="text" placeholder="请填写要更新单车的经度">
+                            <span class="icon is-small is-left">
+                              <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                        <br>
+
+                        <label class="label">行政区</label>
+                        <div class="control has-icons-left">
+                            <input class="input" name="update_district" type="text" placeholder="请填写要更新单车的行政区">
+                            <span class="icon is-small is-left">
+                              <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                        <br>
+
+                        <label class="label">街道</label>
+                        <div class="control has-icons-left">
+                            <input class="input" name="update_street" type="text" placeholder="请填写要更新单车的街道">
+                            <span class="icon is-small is-left">
+                              <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                        <br>
+
+                        <div class="field is-grouped is-grouped-left">
+                          <p class="control">
+                            <button class="button is-link" type="submit">确认更新</button>
+                          </p>
+                        </div>
+                      </form>
+                    </div>
+                </div>
+              </div>
+            </div>
+      </section>
+        <%- include partials/footer.ejs %>
+    </body>
+</html>
