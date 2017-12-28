@@ -2,6 +2,9 @@
 <html>
     <head>
         <title>特殊查询显示界面</title>
+
+        <meta charset="UTF-8">
+        <script src="/javascripts/jquery-1.7.2.min.js" type="text/javascript"></script>
         <%- include partials/head.ejs %>
     </head>
     <!--需要解析xml
@@ -14,25 +17,56 @@
         ...
     </Xml>
     -->
-    <body>
+    <body onload="parseXML()">
       <section class="hero is-white is-bold is-fullheight">
           <div class="hero-head">
-              <%- include partials/uheader.ejs %>
+              <%- include partials/header.ejs %>
           </div>
-        <h1>查询一</h1>
-        <h1>当前管理员id：<%=id%></h1>
-        <h1>当前管理员用户名：<%=username%></h1>
-        <div>
-            <p>
-                <%=xml%>
-            </p>
-        </div>
-        <form action="/users/admin/special" method="post">
+          <div class="hero-body">
+              <div class="container">
+                  <div class="columns">
+                      <h1 class="title column is-3 is-offset-one-quarter">查询一</h1>
+                      <div class="column is-offset-2">
+                          <form action="/users/admin/special/" method="post">
+                              <input name="id" type="hidden" value=<%=id%> />
+                              <input name="username" type="hidden" value=<%=username%> />
+                              <button class="button is-primary is-medium" type="submit">返回</button>
+                          </form>
+                      </div>
+                  </div>
+
+        <div id = "xml" style="display:none"><%-xml%></div>
+        <table id = "show_order"  style="table-layout:fixed;width:600px" class="table is-striped"></table>
+        <!-- <form action="/users/admin/special" method="post">
             <input name="id" type="hidden" value=<%=id%> />
             <input name="username" type="hidden" value=<%=username%> />
             <button type="submit">返回</button>
-        </form>
+        </form> -->
+
+        <script type="text/javascript">
+            function parseXML(){
+                var xml = $("#xml").html();
+                //str = escape2Html(str);
+                //var xml = $.parseXML(str);
+                console.log(xml);
+                str = "";
+                str += "<tr>"
+                str += "<td>地区</td>"
+                str += "<td>街道</td>"
+                str += "</tr>"
+                $(xml).find("Answer").each(function(){
+                    var field = $(this)
+                    str += "<tr>"
+                    str += "<td>" + field.find("District").text() + "</td>"
+                    str += "<td>" + field.find("Street").text() + "</td>"
+                    str += "</tr>"
+                });
+                console.log(str);
+                $("#show_order").html(str);
+            }
+        </script>
+          </div>
+        </div>
       </section>
-        <%- include partials/footer.ejs %>
     </body>
 </html>
