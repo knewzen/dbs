@@ -7,3 +7,8 @@
 5. 授予权限 ``mysql> grant all on ozo.* to admin@localhost;``
 6. 导入数据库 ``mysql> source /ozo/createozo.sql``
 
+###在Node.js环境下运行
+1. 在终端进入ozo目录
+2. 输入 ``npm install; npm start``
+3. 浏览器访问 127.0.0.1：3000
+4. 进入ozo，感受都市之风！
